@@ -15,7 +15,7 @@ const Events = () => {
   }, []);
 
   const fetchEvents = () => {
-    client.get('/events/getAll')
+    client.get('/events')
       .then(response => setEvents(response.data))
       .catch(error => console.error('Error fetching events:', error));
   };
@@ -26,7 +26,7 @@ const Events = () => {
 
   const handleDelete = async (eventId) => {
     try {
-      const response = await client.delete(`/events/delete/${eventId}`);
+      const response = await client.delete(`/events/${eventId}`);
       console.log('Response:', response.data);
       fetchEvents();
     } catch (error) {
@@ -42,7 +42,7 @@ const Events = () => {
       formData.append('image', imageFile);
       formData.append('category', selectedCategory);
   
-      const response = await client.post('/events/create', formData);
+      const response = await client.post('/events', formData);
   
       console.log('Response:', response.data);
   
