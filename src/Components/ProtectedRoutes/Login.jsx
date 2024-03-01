@@ -34,7 +34,9 @@ const Login = ({ onLogin }) => {
 
     if (email === validEmail && password === validPassword) {
       console.log("Login successful.");
-      onLogin(); // Call the callback function passed from the parent component
+      onLogin();
+       // Call the callback function passed from the parent component
+       localStorage.setItem("auth", true);
       navigate('/'); // Redirect to the home page upon successful login
     } else {
       setError('Invalid credentials. Please enter correct email and password.');

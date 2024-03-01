@@ -4,9 +4,13 @@ import { Link } from "react-router-dom";
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import CloseIcon from '@mui/icons-material/Close';
 import ButtonLink from "./ButtonLink";
-
+import {useNavigate} from "react-router-dom"
 const SideBar = ({closemenu}) => {
-    
+const navigate =useNavigate();
+    const logout= ()=>{
+      localStorage.removeItem("auth")
+    navigate("/login")
+    }
   return (
     <Grid container
       height="100%"
@@ -35,8 +39,22 @@ const SideBar = ({closemenu}) => {
              <ButtonLink  path="/timeTable" text="Timetable"/>
              <ButtonLink  path="/top" text="Tobbar"/>
 
- 
-
+          
+           <button 
+  onClick={logout}
+        style={{ 
+          display: 'block', 
+          margin: 'auto', 
+          color: 'White', // Change text color
+          backgroundColor: 'black', // Change background color
+          borderRadius: '5px', // Add rounded corners
+          padding: '10px 20px', // Add padding
+          border: 'none', // Remove border
+          cursor: 'pointer' // Change cursor on hover
+        }}
+      >
+        Logout
+      </button>
      </Grid>
     </Grid>
   );
